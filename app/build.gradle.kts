@@ -14,6 +14,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,6 +51,8 @@ dependencies {
     implementation("com.intuit.ssp:ssp-android:1.1.1")
     implementation("com.makeramen:roundedimageview:2.3.0")
     implementation(libs.firebase.messaging)
+    implementation(libs.firebase.firestore)
+    implementation("androidx.multidex:multidex:2.0.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

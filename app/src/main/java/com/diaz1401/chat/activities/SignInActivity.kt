@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.diaz1401.chat.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivitySignInBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
