@@ -25,6 +25,7 @@
             android:textStyle="bold"
             android:textSize="@dimen/_18ssp"/>
         <FrameLayout
+            android:id="@+id/layoutProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_18sdp">
@@ -36,6 +37,7 @@
                 android:scaleType="centerCrop"
                 app:riv_oval="true"/>
             <TextView
+                android:id="@+id/txtProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -126,7 +128,7 @@
                 android:textSize="@dimen/_12ssp"/>
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_48sdp"
