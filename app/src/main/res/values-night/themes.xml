@@ -1,8 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.SimpleChat" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="android:statusBarColor" >@color/colorPrimary</item>
+        <!-- Customize dark theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="CustomText" parent="Widget.AppCompat.TextView">
+        <item name="android:background">@drawable/background_input_dark</item>
+    </style>
+
+    <style name="CustomTextClick" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorPrimaryLighter</item>
+    </style>
+
+    <style name="CustomButton" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 </resources>

@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_24sdp"
             android:text="Create an Account"
-            android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:textSize="@dimen/_18ssp"/>
         <FrameLayout
@@ -33,7 +32,7 @@
                 android:id="@+id/imgProfile"
                 android:layout_width="@dimen/_64sdp"
                 android:layout_height="@dimen/_64sdp"
-                android:background="@drawable/background_image"
+                android:background="@drawable/background_image_light"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"/>
             <TextView
@@ -50,58 +49,58 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@drawable/background_input"
+            android:background="@drawable/background_input_light"
             android:hint="Name"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textColor="@color/colorBlack"
+            style="@style/CustomText"
             android:textSize="@dimen/_12sdp"/>
         <EditText
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@drawable/background_input"
+            android:background="@drawable/background_input_light"
             android:hint="Email"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textColor="@color/colorBlack"
+            style="@style/CustomText"
             android:textSize="@dimen/_12sdp"/>
         <EditText
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@drawable/background_input"
+            android:background="@drawable/background_input_light"
             android:hint="Password"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12sdp"
+            style="@style/CustomText"
             android:fontFamily="monospace"/>
         <EditText
             android:id="@+id/inputConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@drawable/background_input"
+            android:background="@drawable/background_input_light"
             android:hint="Confirm Password"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12sdp"
+            style="@style/CustomText"
             android:fontFamily="monospace"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -113,7 +112,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Have an account? "
-                android:textColor="@color/colorGreyDark"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12ssp"/>
             <TextView
@@ -121,10 +119,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Sign In"
-                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:clickable="true"
                 android:focusable="true"
+                style="@style/CustomTextClick"
                 android:textSize="@dimen/_12ssp"/>
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
@@ -132,9 +130,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_48sdp"
-            android:textColor="@color/colorWhite"
             android:text="Sign Up"
             android:textSize="@dimen/_12ssp"
+            style="@style/CustomButton"
             app:cornerRadius="@dimen/_12sdp"/>
     </LinearLayout>
 

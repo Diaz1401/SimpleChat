@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_48sdp"
             android:text="Welcome to Simple Chat"
-            android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:textSize="@dimen/_18ssp"/>
         <TextView
@@ -29,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_6sdp"
             android:text="Login to continue"
-            android:textColor="@color/colorGreyLight"
             android:textStyle="bold"
             android:textSize="@dimen/_12ssp"/>
         <EditText
@@ -37,28 +35,26 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_48sdp"
-            android:background="@drawable/background_input"
             android:hint="Email"
+            style="@style/CustomText"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12sdp"/>
         <EditText
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@drawable/background_input"
             android:hint="Password"
+            style="@style/CustomText"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12sdp"
             android:fontFamily="monospace"/>
         <LinearLayout
@@ -71,7 +67,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
-                android:textColor="@color/colorGreyDark"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12ssp"/>
             <TextView
@@ -79,10 +74,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" Create an account"
-                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:clickable="true"
                 android:focusable="true"
+                style="@style/CustomTextClick"
                 android:textSize="@dimen/_12ssp"/>
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
@@ -90,9 +85,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_48sdp"
-            android:textColor="@color/colorWhite"
             android:text="Sign In"
             android:textSize="@dimen/_12ssp"
+            style="@style/CustomButton"
             app:cornerRadius="@dimen/_12sdp"/>
     </LinearLayout>
 
