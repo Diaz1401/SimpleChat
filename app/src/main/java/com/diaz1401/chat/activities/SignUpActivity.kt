@@ -52,9 +52,9 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun signUp() {
         val db = FirebaseFirestore.getInstance()
-        val name = binding.inputName.text.toString()
-        val email = binding.inputEmail.text.toString()
-        val password = binding.inputPassword.text.toString()
+        val name = binding.inputNameSignUp.text.toString()
+        val email = binding.inputEmailSignUp.text.toString()
+        val password = binding.inputPasswordSignUp.text.toString()
         val user = hashMapOf(
             LocalConstants.KEY_NAME to name,
             LocalConstants.KEY_EMAIL to email,
@@ -115,16 +115,16 @@ class SignUpActivity : AppCompatActivity() {
         if (encodedImage == null) {
             showToast("Select profile image")
             return false
-        } else if (binding.inputName.text.toString().trim().isEmpty()) {
+        } else if (binding.inputNameSignUp.text.toString().trim().isEmpty()) {
             showToast("Enter name")
             return false
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.text.toString()).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmailSignUp.text.toString()).matches()) {
             showToast("Enter valid email")
             return false
-        } else if (binding.inputPassword.text.toString().trim().isEmpty()) {
+        } else if (binding.inputPasswordSignUp.text.toString().trim().isEmpty()) {
             showToast("Enter password")
             return false
-        } else if (binding.inputPassword.text.toString() != binding.inputConfirmPassword.text.toString()
+        } else if (binding.inputPasswordSignUp.text.toString() != binding.inputConfirmPasswordSignUp.text.toString()
         ) {
             showToast("Password & confirm password must be same")
             return false

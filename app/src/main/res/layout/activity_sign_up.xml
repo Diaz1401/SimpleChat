@@ -45,7 +45,7 @@
 
         </FrameLayout>
         <EditText
-            android:id="@+id/inputName"
+            android:id="@+id/inputNameSignUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
@@ -59,7 +59,7 @@
             style="@style/CustomText"
             android:textSize="@dimen/_12sdp"/>
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputEmailSignUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
@@ -73,7 +73,7 @@
             style="@style/CustomText"
             android:textSize="@dimen/_12sdp"/>
         <EditText
-            android:id="@+id/inputPassword"
+            android:id="@+id/inputPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
@@ -88,7 +88,7 @@
             style="@style/CustomText"
             android:fontFamily="monospace"/>
         <EditText
-            android:id="@+id/inputConfirmPassword"
+            android:id="@+id/inputConfirmPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"

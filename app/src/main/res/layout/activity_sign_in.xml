@@ -31,7 +31,7 @@
             android:textStyle="bold"
             android:textSize="@dimen/_12ssp"/>
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputEmailSignIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_48sdp"
@@ -44,7 +44,7 @@
             android:paddingEnd="@dimen/_18sdp"
             android:textSize="@dimen/_12sdp"/>
         <EditText
-            android:id="@+id/inputPassword"
+            android:id="@+id/inputPasswordSignIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
