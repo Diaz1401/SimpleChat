@@ -2,7 +2,6 @@ package com.diaz1401.chat.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.telecom.Call.Details
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,6 @@ import com.diaz1401.chat.databinding.ActivitySignInBinding
 import com.diaz1401.chat.utilities.LocalConstants
 import com.diaz1401.chat.utilities.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
-
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
@@ -29,9 +27,10 @@ class SignInActivity : AppCompatActivity() {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
         binding.btnSignIn.setOnClickListener {
-            if (isValidInput()) {
-                signIn()
-            }
+//            if (isValidInput()) {
+//                signIn()
+//            }
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
