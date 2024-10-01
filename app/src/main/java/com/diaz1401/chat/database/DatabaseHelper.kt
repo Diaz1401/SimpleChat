@@ -7,13 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_NAME = "chat.db"
+        private const val DATABASE_NAME = "users.db"
         private const val DATABASE_VERSION = 1
-        const val TABLE_PROFILE = "profile"
+        const val TABLE_PROFILE = "users"
         const val COLUMN_ID = "id"
         const val COLUMN_NAME = "name"
         const val COLUMN_EMAIL = "email"
         const val COLUMN_IMAGE = "image"
+        const val COLUMN_PASSWORD = "password"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -21,7 +22,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "$COLUMN_NAME TEXT,"
                 + "$COLUMN_EMAIL TEXT,"
-                + "$COLUMN_IMAGE TEXT)")
+                + "$COLUMN_IMAGE TEXT,"
+                + "$COLUMN_PASSWORD TEXT)")
         db.execSQL(createTable)
     }
 

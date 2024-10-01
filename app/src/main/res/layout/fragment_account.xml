@@ -1,19 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SignInActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:padding="@dimen/_12sdp"
+    android:scrollbars="none"
+    tools:context=".activities.SignInActivity" >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
         <FrameLayout
             android:id="@+id/layoutProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_18sdp">
+            android:layout_marginTop="@dimen/_48sdp">
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/imgProfile"
                 android:layout_width="@dimen/_64sdp"
@@ -21,69 +28,63 @@
                 android:background="@drawable/background_image_light"
                 android:scaleType="centerCrop"
                 app:riv_oval="true"/>
-            <TextView
-                android:id="@+id/txtProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Add image"
-                android:textSize="@dimen/_12ssp"/>
         </FrameLayout>
 
-        <EditText
-            android:id="@+id/inputID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ID" />
-
-        <EditText
-            android:id="@+id/inputName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name" />
-
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email" />
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save" />
-
-        <Button
-            android:id="@+id/btnUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete" />
-
-        <Button
-            android:id="@+id/btnLoad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Load" />
-        <Button
-            android:id="@+id/btnFile"
-            android:layout_marginTop="@dimen/_48sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="File" />
         <TextView
-            android:id="@+id/tvAccounts"
-            android:layout_width="match_parent"
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Accounts will be listed here"
-            android:paddingTop="16dp" />
+            android:text="NAME"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/layoutProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_24sdp" />
 
+        <LinearLayout
+            android:id="@+id/layoutUID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
 
+            <TextView
+                android:id="@+id/txtUID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UID: "
+                android:textSize="@dimen/_12ssp" />
+            <TextView
+                android:id="@+id/txtId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMAIL"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/layoutUID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            app:layout_constraintTop_toBottomOf="@id/txtName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_24sdp" />
     </LinearLayout>
 </ScrollView>

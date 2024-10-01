@@ -16,46 +16,49 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_48sdp"
-            android:text="Welcome to Simple Chat"
-            android:textStyle="bold"
-            android:textSize="@dimen/_18ssp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:text="Login to continue"
-            android:textStyle="bold"
-            android:textSize="@dimen/_12ssp"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_48sdp"-->
+<!--            android:text="Sign In to Continue"-->
+<!--            android:textSize="@dimen/_12ssp"/>-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginTop="@dimen/_64sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:src="@drawable/logo"
+            android:contentDescription="Logo"/>
         <EditText
             android:id="@+id/inputEmailSignIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
-            android:layout_marginTop="@dimen/_48sdp"
+            android:layout_marginTop="@dimen/_24sdp"
             android:hint="Email"
-            style="@style/CustomText"
+            android:background="@drawable/background_input_light"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textSize="@dimen/_12sdp"/>
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGreyDark"
+            android:textSize="@dimen/_12ssp"/>
         <EditText
             android:id="@+id/inputPasswordSignIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginTop="@dimen/_24sdp"
             android:hint="Password"
-            style="@style/CustomText"
+            android:background="@drawable/background_input_light"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGreyDark"
             android:fontFamily="monospace"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -67,7 +70,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
-                android:textStyle="bold"
                 android:textSize="@dimen/_12ssp"/>
             <TextView
                 android:id="@+id/txtSignUp"
@@ -88,7 +90,7 @@
             android:text="Sign In"
             android:textSize="@dimen/_12ssp"
             style="@style/CustomButton"
-            app:cornerRadius="@dimen/_12sdp"/>
+            app:cornerRadius="@dimen/_12ssp"/>
     </LinearLayout>
 
 </ScrollView>

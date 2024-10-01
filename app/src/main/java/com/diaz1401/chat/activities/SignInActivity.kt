@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.diaz1401.chat.database.DatabaseHelper
+import com.diaz1401.chat.database.ProfileDAO
 import com.diaz1401.chat.databinding.ActivitySignInBinding
 import com.diaz1401.chat.utilities.LocalConstants
 import com.diaz1401.chat.utilities.PreferenceManager
@@ -13,9 +15,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
     private lateinit var preferenceManager: PreferenceManager
+    private var profileDAO = ProfileDAO(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.hide()
+
         preferenceManager = PreferenceManager(applicationContext)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -27,11 +33,32 @@ class SignInActivity : AppCompatActivity() {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
         binding.btnSignIn.setOnClickListener {
-//            if (isValidInput()) {
-//                signIn()
-//            }
-            startActivity(Intent(this, MainActivity::class.java))
+            if (isValidInput()) {
+                signInSQLite()
+            }
         }
+    }
+
+    private fun signInSQLite() {
+        val email = binding.inputEmailSignIn.text.toString()
+        val password = binding.inputPasswordSignIn.text.toString()
+        val cursor = profileDAO.getSignIn(email, password)
+        if (cursor.count > 0) {
+            if (cursor.moveToFirst()) {
+                val name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_NAME))
+                val image = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_IMAGE))
+                val id = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID))
+                preferenceManager.putBoolean(LocalConstants.KEY_IS_SIGNED_IN, true)
+                preferenceManager.putString(LocalConstants.KEY_USER_ID, id.toString())
+                preferenceManager.putString(LocalConstants.KEY_NAME, name)
+                preferenceManager.putString(LocalConstants.KEY_EMAIL, email)
+                preferenceManager.putString(LocalConstants.KEY_IMAGE, image)
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        } else {
+            showToast("Unable to sign in")
+        }
+        cursor.close()
     }
 
     private fun signIn() {

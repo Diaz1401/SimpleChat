@@ -12,6 +12,8 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.diaz1401.chat.database.DatabaseHelper
+import com.diaz1401.chat.database.ProfileDAO
 import com.diaz1401.chat.databinding.ActivitySignUpBinding
 import com.diaz1401.chat.utilities.LocalConstants
 import com.diaz1401.chat.utilities.PreferenceManager
@@ -25,9 +27,11 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private var preferenceManager: PreferenceManager? = null
     private var encodedImage: String? = null
+    private val profileDAO = ProfileDAO(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         preferenceManager = PreferenceManager(applicationContext)
@@ -40,13 +44,32 @@ class SignUpActivity : AppCompatActivity() {
         }
         binding.btnSignUp.setOnClickListener {
             if (isValidInput()) {
-                signUp()
+//                signUp()
+                signUpSQLite()
             }
         }
         binding.layoutProfile.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             setProfileImage.launch(intent)
+        }
+    }
+
+    private fun signUpSQLite() {
+        val name = binding.inputNameSignUp.text.toString()
+        val email = binding.inputEmailSignUp.text.toString()
+        val password = binding.inputPasswordSignUp.text.toString()
+        val image: String? = encodedImage
+        val id = profileDAO.insertProfile(name, email, image.toString(), password)
+        if (id > 0) {
+            preferenceManager?.putBoolean(LocalConstants.KEY_IS_SIGNED_IN, true)
+            preferenceManager?.putString(LocalConstants.KEY_USER_ID, id.toString())
+            preferenceManager?.putString(LocalConstants.KEY_NAME, name)
+            preferenceManager?.putString(LocalConstants.KEY_EMAIL, email)
+            preferenceManager?.putString(LocalConstants.KEY_IMAGE, image)
+            showToast("User created successfully")
+        } else {
+            showToast("Error: Unable to insert data")
         }
     }
 
