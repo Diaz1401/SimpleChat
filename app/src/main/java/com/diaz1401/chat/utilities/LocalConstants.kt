@@ -10,5 +10,6 @@ class LocalConstants {
         const val KEY_IS_SIGNED_IN: String = "isSignedIn"
         const val KEY_USER_ID: String = "userId"
         const val KEY_IMAGE: String = "image"
+        const val KEY_BIO: String = "bio"
     }
 }

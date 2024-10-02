@@ -65,10 +65,16 @@ class AccountFragment : Fragment() {
         val email = preferenceManager.getString(LocalConstants.KEY_EMAIL)
         val image = preferenceManager.getString(LocalConstants.KEY_IMAGE)
         val id = preferenceManager.getString(LocalConstants.KEY_USER_ID)
+        val bio = preferenceManager.getString(LocalConstants.KEY_BIO)
 
         binding.txtName.text = name
         binding.txtEmail.text = email
         binding.txtId.text = id
+        if (bio.isNullOrEmpty()) {
+            binding.txtBio.text = getString(R.string.bio_not_available)
+        } else {
+            binding.txtBio.text = bio
+        }
         val bitmap = decodeImage(image)
         if (bitmap != null) {
             binding.imgProfile.setImageBitmap(bitmap)

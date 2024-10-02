@@ -1,4 +1,4 @@
-package com.diaz1401.chat.firebase
+package com.diaz1401.chat.database.firebase
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage

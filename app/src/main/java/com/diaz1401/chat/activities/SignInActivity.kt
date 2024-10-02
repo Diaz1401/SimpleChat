@@ -80,6 +80,7 @@ class SignInActivity : AppCompatActivity() {
                     preferenceManager.putString(LocalConstants.KEY_EMAIL, user.getString(LocalConstants.KEY_EMAIL))
                     preferenceManager.putString(LocalConstants.KEY_IMAGE, user.getString(LocalConstants.KEY_IMAGE))
                     preferenceManager.putString(LocalConstants.KEY_PASSWORD, password)
+                    preferenceManager.putString(LocalConstants.KEY_BIO, user.getString(LocalConstants.KEY_BIO))
                     startActivity(Intent(this, MainActivity::class.java))
                 } else {
                     showToast("Unable to sign in")
@@ -104,7 +105,6 @@ class SignInActivity : AppCompatActivity() {
             showToast("Enter password")
             return false
         }
-
         return true
     }
 

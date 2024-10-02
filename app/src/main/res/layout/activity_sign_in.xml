@@ -16,12 +16,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal">
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="@dimen/_48sdp"-->
-<!--            android:text="Sign In to Continue"-->
-<!--            android:textSize="@dimen/_12ssp"/>-->
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/_120sdp"
             android:layout_height="@dimen/_120sdp"
@@ -37,7 +31,6 @@
             android:hint="Email"
             android:background="@drawable/background_input_light"
             android:imeOptions="actionNext"
-            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"
@@ -52,7 +45,6 @@
             android:hint="Password"
             android:background="@drawable/background_input_light"
             android:imeOptions="actionDone"
-            android:importantForAutofill="no"
             android:inputType="textPassword"
             android:paddingStart="@dimen/_18sdp"
             android:paddingEnd="@dimen/_18sdp"

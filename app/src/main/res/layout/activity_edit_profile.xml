@@ -41,7 +41,7 @@
             android:hint="Your email address" />
 
         <EditText
-            android:id="@+id/inputBIO"
+            android:id="@+id/inputBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"

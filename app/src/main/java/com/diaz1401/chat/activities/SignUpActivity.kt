@@ -85,7 +85,8 @@ class SignUpActivity : AppCompatActivity() {
             LocalConstants.KEY_NAME to name,
             LocalConstants.KEY_EMAIL to email,
             LocalConstants.KEY_PASSWORD to password,
-            LocalConstants.KEY_IMAGE to encodedImage
+            LocalConstants.KEY_IMAGE to encodedImage,
+            LocalConstants.KEY_BIO to null
         )
         db.collection(LocalConstants.KEY_COLLECTION_USERS)
             .add(user)
@@ -95,6 +96,8 @@ class SignUpActivity : AppCompatActivity() {
                 preferenceManager?.putString(LocalConstants.KEY_NAME, name)
                 preferenceManager?.putString(LocalConstants.KEY_EMAIL, email)
                 preferenceManager?.putString(LocalConstants.KEY_IMAGE, encodedImage)
+                preferenceManager?.putString(LocalConstants.KEY_PASSWORD, password)
+                preferenceManager?.putString(LocalConstants.KEY_BIO, null)
                 showToast("User created successfully")
                 val intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

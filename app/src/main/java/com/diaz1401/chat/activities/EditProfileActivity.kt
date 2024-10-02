@@ -49,6 +49,11 @@ class EditProfileActivity : AppCompatActivity() {
         val name = preferenceManager.getString(LocalConstants.KEY_NAME)
         val email = preferenceManager.getString(LocalConstants.KEY_EMAIL)
         encodedImage = preferenceManager.getString(LocalConstants.KEY_IMAGE)
+        val bio = preferenceManager.getString(LocalConstants.KEY_BIO)
+
+        if (!bio.isNullOrEmpty()) {
+            binding.inputBio.setText(bio)
+        }
 
         binding.inputName.setText(name)
         binding.inputEmail.setText(email)
@@ -88,7 +93,8 @@ class EditProfileActivity : AppCompatActivity() {
             LocalConstants.KEY_NAME to binding.inputName.text.toString(),
             LocalConstants.KEY_EMAIL to binding.inputEmail.text.toString(),
             LocalConstants.KEY_IMAGE to encodedImage,
-            LocalConstants.KEY_PASSWORD to binding.inputPW.text.toString()
+            LocalConstants.KEY_PASSWORD to binding.inputPW.text.toString(),
+            LocalConstants.KEY_BIO to binding.inputBio.text.toString()
         )
         val id = preferenceManager.getString(LocalConstants.KEY_USER_ID)
         if (id != null) {
