@@ -43,6 +43,9 @@ class AccountFragment : Fragment() {
         binding.btnEditProfile.setOnClickListener {
             startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
+        binding.btnLogOut.setOnClickListener {
+            logOut()
+        }
         displayProfile()
     }
 
@@ -58,6 +61,11 @@ class AccountFragment : Fragment() {
         } else {
             null
         }
+    }
+
+    private fun logOut() {
+        preferenceManager.clear()
+        requireActivity().finish()
     }
 
     private fun displayProfile() {
