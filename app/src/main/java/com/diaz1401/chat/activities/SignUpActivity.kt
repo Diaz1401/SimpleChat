@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -44,8 +45,8 @@ class SignUpActivity : AppCompatActivity() {
         }
         binding.btnSignUp.setOnClickListener {
             if (isValidInput()) {
-//                signUp()
-                signUpSQLite()
+                signUp()
+//                signUpSQLite()
             }
         }
         binding.layoutProfile.setOnClickListener {
@@ -59,15 +60,17 @@ class SignUpActivity : AppCompatActivity() {
         val name = binding.inputNameSignUp.text.toString()
         val email = binding.inputEmailSignUp.text.toString()
         val password = binding.inputPasswordSignUp.text.toString()
-        val image: String? = encodedImage
-        val id = profileDAO.insertProfile(name, email, image.toString(), password)
+        val id = profileDAO.insertProfile(name, email, encodedImage.toString(), password)
         if (id > 0) {
             preferenceManager?.putBoolean(LocalConstants.KEY_IS_SIGNED_IN, true)
             preferenceManager?.putString(LocalConstants.KEY_USER_ID, id.toString())
             preferenceManager?.putString(LocalConstants.KEY_NAME, name)
             preferenceManager?.putString(LocalConstants.KEY_EMAIL, email)
-            preferenceManager?.putString(LocalConstants.KEY_IMAGE, image)
+            preferenceManager?.putString(LocalConstants.KEY_IMAGE, encodedImage)
             showToast("User created successfully")
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
         } else {
             showToast("Error: Unable to insert data")
         }
@@ -92,6 +95,7 @@ class SignUpActivity : AppCompatActivity() {
                 preferenceManager?.putString(LocalConstants.KEY_NAME, name)
                 preferenceManager?.putString(LocalConstants.KEY_EMAIL, email)
                 preferenceManager?.putString(LocalConstants.KEY_IMAGE, encodedImage)
+                showToast("User created successfully")
                 val intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
@@ -120,7 +124,7 @@ class SignUpActivity : AppCompatActivity() {
                         val inputStream = imageUri?.let { contentResolver.openInputStream(it) }
                         val bitmap = BitmapFactory.decodeStream(inputStream)
                         binding.imgProfile.setImageBitmap(bitmap)
-                        binding.txtProfile.visibility = android.view.View.GONE
+                        binding.txtProfile.visibility = View.GONE
                         encodedImage = encodeImage(bitmap)
                     } catch (e: FileNotFoundException) {
                         e.printStackTrace()
@@ -155,5 +159,4 @@ class SignUpActivity : AppCompatActivity() {
             return true
         }
     }
-
 }

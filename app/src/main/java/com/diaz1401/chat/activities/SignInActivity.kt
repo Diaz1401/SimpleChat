@@ -34,7 +34,8 @@ class SignInActivity : AppCompatActivity() {
         }
         binding.btnSignIn.setOnClickListener {
             if (isValidInput()) {
-                signInSQLite()
+//                signInSQLite()
+                signIn()
             }
         }
     }
@@ -53,6 +54,7 @@ class SignInActivity : AppCompatActivity() {
                 preferenceManager.putString(LocalConstants.KEY_NAME, name)
                 preferenceManager.putString(LocalConstants.KEY_EMAIL, email)
                 preferenceManager.putString(LocalConstants.KEY_IMAGE, image)
+                preferenceManager.putString(LocalConstants.KEY_PASSWORD, password)
                 startActivity(Intent(this, MainActivity::class.java))
             }
         } else {
@@ -63,17 +65,21 @@ class SignInActivity : AppCompatActivity() {
 
     private fun signIn() {
         val db = FirebaseFirestore.getInstance()
+        val email = binding.inputEmailSignIn.text.toString()
+        val password = binding.inputPasswordSignIn.text.toString()
         db.collection(LocalConstants.KEY_COLLECTION_USERS)
-            .whereEqualTo(LocalConstants.KEY_EMAIL, binding.inputEmailSignIn.text.toString())
-            .whereEqualTo(LocalConstants.KEY_PASSWORD, binding.inputPasswordSignIn.text.toString())
+            .whereEqualTo(LocalConstants.KEY_EMAIL, email)
+            .whereEqualTo(LocalConstants.KEY_PASSWORD, password)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful && task.result != null && task.result!!.documents.size > 0) {
-                    val documentSnapshot = task.result!!.documents[0]
+                    val user = task.result!!.documents[0]
                     preferenceManager.putBoolean(LocalConstants.KEY_IS_SIGNED_IN, true)
-                    preferenceManager.putString(LocalConstants.KEY_USER_ID, documentSnapshot.id)
-                    preferenceManager.putString(LocalConstants.KEY_NAME, documentSnapshot.getString(LocalConstants.KEY_NAME))
-                    preferenceManager.putString(LocalConstants.KEY_IMAGE, documentSnapshot.getString(LocalConstants.KEY_IMAGE))
+                    preferenceManager.putString(LocalConstants.KEY_USER_ID, user.id)
+                    preferenceManager.putString(LocalConstants.KEY_NAME, user.getString(LocalConstants.KEY_NAME))
+                    preferenceManager.putString(LocalConstants.KEY_EMAIL, user.getString(LocalConstants.KEY_EMAIL))
+                    preferenceManager.putString(LocalConstants.KEY_IMAGE, user.getString(LocalConstants.KEY_IMAGE))
+                    preferenceManager.putString(LocalConstants.KEY_PASSWORD, password)
                     startActivity(Intent(this, MainActivity::class.java))
                 } else {
                     showToast("Unable to sign in")

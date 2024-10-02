@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation("androidx.multidex:multidex:2.0.1")
     implementation(libs.androidx.navigation.fragment)
+    implementation("androidx.core:core-splashscreen:1.0.0")
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

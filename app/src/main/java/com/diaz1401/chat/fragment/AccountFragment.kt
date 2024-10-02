@@ -1,5 +1,6 @@
 package com.diaz1401.chat.fragment
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -9,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.diaz1401.chat.R
+import com.diaz1401.chat.activities.EditProfileActivity
+import com.diaz1401.chat.activities.SignUpActivity
 import com.diaz1401.chat.database.ProfileDAO
 import com.diaz1401.chat.databinding.FragmentAccountBinding
 import com.diaz1401.chat.utilities.LocalConstants
@@ -37,6 +40,9 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnEditProfile.setOnClickListener {
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+        }
         displayProfile()
     }
 
@@ -67,7 +73,7 @@ class AccountFragment : Fragment() {
         if (bitmap != null) {
             binding.imgProfile.setImageBitmap(bitmap)
         } else {
-            binding.imgProfile.setImageResource(R.drawable.logo) // Use a default image
+            binding.imgProfile.setImageResource(R.drawable.person) // Use a default image
         }
     }
 
