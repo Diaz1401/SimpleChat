@@ -68,9 +68,9 @@ class SignUpActivity : AppCompatActivity() {
             preferenceManager?.putString(LocalConstants.KEY_EMAIL, email)
             preferenceManager?.putString(LocalConstants.KEY_IMAGE, encodedImage)
             showToast("User created successfully")
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
+//            val intent = Intent(this, MainActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//            startActivity(intent)
         } else {
             showToast("Error: Unable to insert data")
         }
@@ -99,9 +99,10 @@ class SignUpActivity : AppCompatActivity() {
                 preferenceManager?.putString(LocalConstants.KEY_PASSWORD, password)
                 preferenceManager?.putString(LocalConstants.KEY_BIO, null)
                 showToast("User created successfully")
-                val intent = Intent(this, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(intent)
+//                val intent = Intent(this, MainActivity::class.java)
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                startActivity(intent)
+                finish()
             }
             .addOnFailureListener {
                 showToast("Error: ${it.message}")
