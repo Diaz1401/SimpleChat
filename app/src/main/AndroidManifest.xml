@@ -42,7 +42,7 @@
             android:exported="false" />
 
         <service
-            android:name=".database.firebase.MessagingService"
+            android:name=".firebase.MessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

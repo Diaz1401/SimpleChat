@@ -2,7 +2,6 @@ package com.diaz1401.chat.fragment
 
 import android.Manifest
 import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -12,26 +11,30 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Base64
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.diaz1401.chat.R
 import com.diaz1401.chat.activities.EditProfileActivity
+import com.diaz1401.chat.activities.SignInActivity
 import com.diaz1401.chat.database.ProfileDAO
 import com.diaz1401.chat.databinding.FragmentAccountBinding
 import com.diaz1401.chat.utilities.LocalConstants
 import com.diaz1401.chat.utilities.PreferenceManager
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
-import android.view.MotionEvent
-import android.view.GestureDetector
-import android.widget.EditText
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+
 
 class AccountFragment : Fragment(), LocationListener {
 
@@ -49,6 +52,7 @@ class AccountFragment : Fragment(), LocationListener {
         super.onCreate(savedInstanceState)
         profileDAO = ProfileDAO(requireContext())
         preferenceManager = PreferenceManager(requireContext())
+        locationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -120,7 +124,6 @@ class AccountFragment : Fragment(), LocationListener {
     }
 
     private fun getLocation() {
-        locationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -310,9 +313,30 @@ class AccountFragment : Fragment(), LocationListener {
         }
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
     private fun logOut() {
-        preferenceManager.clear()
-        requireActivity().finish()
+        showToast("Signing out...")
+        val database = FirebaseFirestore.getInstance()
+        val documentReference =
+            database.collection(LocalConstants.KEY_COLLECTION_USERS).document(
+                preferenceManager.getString(LocalConstants.KEY_USER_ID)!!
+            )
+        val updates = HashMap<String, Any>()
+        updates[LocalConstants.KEY_FCM_TOKEN] = FieldValue.delete()
+        documentReference.update(updates)
+            .addOnSuccessListener {
+                preferenceManager.clear()
+                startActivity(Intent(requireContext(), SignInActivity::class.java))
+                requireActivity().finish()
+            }
+            .addOnFailureListener {
+                showToast(
+                    "Unable to sign out"
+                )
+            }
     }
 
     private fun displayProfile() {
@@ -340,7 +364,9 @@ class AccountFragment : Fragment(), LocationListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        locationManager.removeUpdates(this)
+        if (::locationManager.isInitialized) {
+            locationManager.removeUpdates(this)
+        }
         _binding = null
     }
 }
